@@ -16,13 +16,15 @@ class ItemsResponse(BaseModel):
     item_list: List[ItemModel]
 
 
-@app.get("/items")
-def items() -> ItemsResponse:
-    item_list = [
-        ItemModel(id=1, name="Veg Biryani", price=180, description="Spicy and flavorful"),
-        ItemModel(id=2, name="Paneer Tikka", price=220, description="Grilled cottage cheese"),
-        ItemModel(id=3, name="Butter Naan", price=40)
-    ]
+@app.get("/items/{id}")
+def items(id : int) -> ItemsResponse:
+    with open("sample.json", "r") as file:
+        data = json.load(file)
+    item_list = []
+    for rest in data["rest_list"]:
+        if rest["id"] == id:
+            for item in rest["items"]:
+                item_list.append(ItemModel(id = item["id"], name = item["name"], price = item["price"], description= item["description"]))
     return ItemsResponse(item_list=item_list)
 
 
