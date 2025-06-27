@@ -1,5 +1,7 @@
 import json
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
+
 from pydantic import BaseModel
 from typing import Optional,List
 
@@ -48,3 +50,8 @@ def restaurants() -> RestaurantsResponse:
     for restaurant in data["rest_list"]:
         rest_list.append(RestaurantModel(id = restaurant["id"], name = restaurant["name"], location= restaurant["location"]))
     return RestaurantsResponse(rest_list= rest_list)
+
+
+@app.get("/")
+def home():
+    return FileResponse("index.html")

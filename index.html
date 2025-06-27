@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Say Hi</title>
+</head>
+<body>
+    <h1>Hi!</h1>
+    <div id="restaurant-list"></div>
+</body>
+<script>
+  fetch(`${window.location.href}restaurants`)
+    .then(response => response.json())
+    .then(data => {
+          const container = document.getElementById("restaurant-list");
+          const list = document.createElement("ul");
+          data.rest_list.forEach(rest => {
+            const item = document.createElement("li");
+            item.textContent = `ID : ${rest.id} - NAME : ${rest.name} - LOCATION : ${rest.location}`;
+
+            list.appendChild(item);
+          });
+          container.appendChild(list);
+        })
+    .catch(err => console.error('Error:', err));
+</script>
+</html>
