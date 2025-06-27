@@ -1,24 +1,30 @@
 
-# from fastapi import FastAPI
-# from routers import restaurants
-# app = FastAPI()
-# app.include_router(restaurants.router)
-
 from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional,List
+
 app = FastAPI()
 
-class MessageResponse(BaseModel):
-    message: int =0
-    name: Optional[str] = None
-    # Declare that message must be an int
 
-@app.get("/", response_model=MessageResponse)
-def say_hi() -> MessageResponse:
-    return MessageResponse(message=5)
+class ItemModel(BaseModel):
+    id: int
+    name: str
+    price: float
+    description: str = None
 
+class RestaurantModel(BaseModel):
+    id: int
+    name: str
+    location: str
 
-@app.get("/name", response_model=MessageResponse)
-def name() -> MessageResponse:
-    return MessageResponse(name = "Kiran")
+class RestaurantsResponse(BaseModel):
+    rest_list: List[RestaurantModel]
+
+@app.get("/restaurants", response_model=RestaurantsResponse)
+def restaurants() -> RestaurantsResponse:
+    rest_list = [
+        RestaurantModel(id=1, name="Spice Villa", location="Banjara Hills"),
+        RestaurantModel(id=2, name="Grill & Chill", location="Madhapur"),
+        RestaurantModel(id=3, name="Saffron Bite", location="Kukatpally")
+    ]
+    return RestaurantsResponse(rest_list = rest_list)

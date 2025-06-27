@@ -16,6 +16,9 @@
 We will target Showing Restaurants and food items
 
 GET /restaurants
+{
+    rest_list
+}
 [
     {
         "id":"789",
@@ -45,4 +48,6 @@ GET /restaurants/<id>
 }
 
 
+Phase2
 
+Ratings, Reviews(food and rest)
