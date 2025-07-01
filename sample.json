@@ -1,54 +1,172 @@
 {
-  "rest_list": [
-    {
-      "id": 1,
-      "name": "Spice Villa",
-      "location": "Banjara Hills",
-      "items": [
-        {"id": 101, "name": "Paneer Butter Masala", "price": 220, "description": "Creamy cottage cheese curry"},
-        {"id": 102, "name": "Butter Naan", "price": 40, "description": "Soft and buttery Indian bread"},
-        {"id": 103, "name": "Veg Biryani", "price": 180, "description": "Fragrant rice with vegetables and spices"}
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Grill & Chill",
-      "location": "Madhapur",
-      "items": [
-        {"id": 104, "name": "Chicken Kebab", "price": 250, "description": "Grilled skewers with spices"},
-        {"id": 105, "name": "Tandoori Roti", "price": 30, "description": "Whole wheat flatbread"},
-        {"id": 106, "name": "Mutton Rogan Josh", "price": 320, "description": "Slow-cooked lamb curry"}
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Urban Tadka",
-      "location": "Kukatpally",
-      "items": [
-        {"id": 107, "name": "Dal Makhani", "price": 180, "description": "Black lentils cooked with cream"},
-        {"id": 108, "name": "Jeera Rice", "price": 100, "description": "Flavored cumin rice"},
-        {"id": 109, "name": "Kadai Paneer", "price": 200, "description": "Paneer tossed in spices and bell peppers"}
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Curry Nation",
-      "location": "Gachibowli",
-      "items": [
-        {"id": 110, "name": "Chicken Tikka Masala", "price": 270, "description": "Grilled chicken in creamy tomato sauce"},
-        {"id": 111, "name": "Garlic Naan", "price": 50, "description": "Naan topped with minced garlic"},
-        {"id": 112, "name": "Masala Papad", "price": 60, "description": "Crispy snack with tangy toppings"}
-      ]
-    },
-    {
-      "id": 5,
-      "name": "South Spice",
-      "location": "Jubilee Hills",
-      "items": [
-        {"id": 113, "name": "Masala Dosa", "price": 90, "description": "Stuffed rice crepe with potato masala"},
-        {"id": 114, "name": "Medu Vada", "price": 70, "description": "Crispy lentil donuts"},
-        {"id": 115, "name": "Filter Coffee", "price": 40, "description": "Classic South Indian coffee"}
-      ]
-    }
-  ]
+    "rest_list": [
+        {
+            "id": 1,
+            "name": "Spice Villa",
+            "location": "Banjara Hills",
+            "items": [
+                {
+                    "id": 101,
+                    "name": "Paneer Butter Masala",
+                    "price": 220.0,
+                    "description": "Creamy cottage cheese curry",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 102,
+                    "name": "Butter Naan",
+                    "price": 40.0,
+                    "description": "Soft and buttery Indian bread",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 103,
+                    "name": "Veg Biryani",
+                    "price": 180.0,
+                    "description": "Fragrant rice with vegetables and spices",
+                    "available_quantity": 0
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Grill & Chill",
+            "location": "Madhapur",
+            "items": [
+                {
+                    "id": 104,
+                    "name": "Chicken Kebab",
+                    "price": 250.0,
+                    "description": "Grilled skewers with spices",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 105,
+                    "name": "Tandoori Roti",
+                    "price": 30.0,
+                    "description": "Whole wheat flatbread",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 106,
+                    "name": "Mutton Rogan Josh",
+                    "price": 320.0,
+                    "description": "Slow-cooked lamb curry",
+                    "available_quantity": 0
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Urban Tadka",
+            "location": "Kukatpally",
+            "items": [
+                {
+                    "id": 107,
+                    "name": "Dal Makhani",
+                    "price": 180.0,
+                    "description": "Black lentils cooked with cream",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 108,
+                    "name": "Jeera Rice",
+                    "price": 100.0,
+                    "description": "Flavored cumin rice",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 109,
+                    "name": "Kadai Paneer",
+                    "price": 200.0,
+                    "description": "Paneer tossed in spices and bell peppers",
+                    "available_quantity": 0
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Curry Nation",
+            "location": "Gachibowli",
+            "items": [
+                {
+                    "id": 110,
+                    "name": "Chicken Tikka Masala",
+                    "price": 270.0,
+                    "description": "Grilled chicken in creamy tomato sauce",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 111,
+                    "name": "Garlic Naan",
+                    "price": 50.0,
+                    "description": "Naan topped with minced garlic",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 112,
+                    "name": "Masala Papad",
+                    "price": 60.0,
+                    "description": "Crispy snack with tangy toppings",
+                    "available_quantity": 0
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "South Spice",
+            "location": "Jubilee Hills",
+            "items": [
+                {
+                    "id": 113,
+                    "name": "Masala Dosa",
+                    "price": 90.0,
+                    "description": "Stuffed rice crepe with potato masala",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 114,
+                    "name": "Medu Vada",
+                    "price": 70.0,
+                    "description": "Crispy lentil donuts",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 115,
+                    "name": "Filter Coffee",
+                    "price": 40.0,
+                    "description": "Classic South Indian coffee",
+                    "available_quantity": 0
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Smoke n Spice",
+            "location": "ABC ",
+            "items": [
+                {
+                    "id": 116,
+                    "name": "BBQ Chicken Wings",
+                    "price": 280.0,
+                    "description": "Smoky barbecue chicken wings with special spice blend",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 117,
+                    "name": "Chicken Fry Biryani",
+                    "price": 320.0,
+                    "description": "Smoky, spicy chicken over fragrant rice with crunchy toppings.",
+                    "available_quantity": 0
+                },
+                {
+                    "id": 118,
+                    "name": "Crispy Fried Chicken - 2pcs",
+                    "price": 120,
+                    "description": "Crunchy, spicy fried chicken served with toppings.",
+                    "available_quantity": 2
+                }
+            ]
+        }
+    ]
 }
