@@ -1,5 +1,5 @@
 import json
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from typing import Optional,List
@@ -109,7 +109,7 @@ def update_item(restaurant_id: int, item_id: int, item_update: ItemUpdateModel) 
                     )
             
             # Item not found in this restaurant
-            return {"error": "Item not found in this restaurant"}
+            raise HTTPException(status_code=404, detail="Item not found in this restaurant")
     
     # Restaurant not found
-    return {"error": "Restaurant not found"}
+    raise HTTPException(status_code=404, detail="Restaurant not found")
