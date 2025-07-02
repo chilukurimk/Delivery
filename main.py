@@ -113,3 +113,45 @@ def update_item(restaurant_id: int, item_id: int, item_update: ItemUpdateModel) 
     
     # Restaurant not found
     raise HTTPException(status_code=404, detail="Restaurant not found")
+
+
+# Import orders functionality
+from orders import (
+    OrderCreate, Order, OrdersResponse, OrderStatusUpdate, OrderStatus,
+    create_order, get_all_orders, get_order_by_id, update_order_status,
+    get_orders_by_restaurant, get_orders_by_status
+)
+
+# Orders endpoints
+@app.post("/orders", response_model=Order)
+def create_new_order(order: OrderCreate) -> Order:
+    """Create a new order"""
+    return create_order(order)
+
+@app.get("/orders", response_model=OrdersResponse)
+def get_orders() -> OrdersResponse:
+    """Get all orders"""
+    orders = get_all_orders()
+    return OrdersResponse(orders=orders)
+
+@app.get("/orders/{order_id}", response_model=Order)
+def get_order(order_id: int) -> Order:
+    """Get a specific order by ID"""
+    return get_order_by_id(order_id)
+
+@app.put("/orders/{order_id}/status", response_model=Order)
+def update_order_status_endpoint(order_id: int, status_update: OrderStatusUpdate) -> Order:
+    """Update order status"""
+    return update_order_status(order_id, status_update)
+
+@app.get("/restaurants/{restaurant_id}/orders", response_model=OrdersResponse)
+def get_restaurant_orders(restaurant_id: int) -> OrdersResponse:
+    """Get all orders for a specific restaurant"""
+    orders = get_orders_by_restaurant(restaurant_id)
+    return OrdersResponse(orders=orders)
+
+@app.get("/orders/status/{status}", response_model=OrdersResponse)
+def get_orders_by_status_endpoint(status: OrderStatus) -> OrdersResponse:
+    """Get all orders with a specific status"""
+    orders = get_orders_by_status(status)
+    return OrdersResponse(orders=orders)
