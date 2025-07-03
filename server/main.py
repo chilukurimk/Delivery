@@ -1,4 +1,5 @@
 import json
+from collections import OrderedDict
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
@@ -78,9 +79,30 @@ class RestaurantCreateModel(BaseModel):
 def create_restaurant(restaurant: RestaurantCreateModel) -> RestaurantCreateModel:
     with open("sample.json", "r") as file:
         data = json.load(file)
-    data["rest_list"].append(restaurant.model_dump())
+    
+    # Generate new ID by finding the maximum existing ID and adding 1
+    max_id = 0
+    for rest in data["rest_list"]:
+        if "id" in rest and rest["id"] > max_id:
+            max_id = rest["id"]
+    
+    new_id = max_id + 1
+    
+    # Create restaurant dict in the correct order using OrderedDict
+    restaurant_dict = OrderedDict([
+        ("id", new_id),
+        ("name", restaurant.name),
+        ("location", restaurant.location),
+        ("description", restaurant.description or ""),
+        ("items", [])
+    ])
+    
+    print(f"Restaurant dict before saving: {restaurant_dict}")
+    print(f"Keys order: {list(restaurant_dict.keys())}")
+    
+    data["rest_list"].append(restaurant_dict)
     with open("sample.json", "w") as file:
-        json.dump(data, file, indent=4)
+        json.dump(data, file, indent=4, ensure_ascii=False)
     return restaurant
 
 
@@ -130,6 +152,59 @@ def update_item(restaurant_id: int, item_id: int, item_update: ItemUpdateModel) 
             raise HTTPException(status_code=404, detail="Item not found in this restaurant")
     
     # Restaurant not found
+    raise HTTPException(status_code=404, detail="Restaurant not found")
+
+
+# Add new item to a restaurant
+class ItemCreateModel(BaseModel):
+    name: str
+    price: float
+    description: Optional[str] = None
+    available_quantity: int = 0
+
+@app.post("/restaurants/{restaurant_id}/items")
+def add_item_to_restaurant(restaurant_id: int, item: ItemCreateModel) -> ItemModel:
+    with open("sample.json", "r") as file:
+        data = json.load(file)
+    
+    # Find the restaurant by ID
+    for rest in data["rest_list"]:
+        if rest["id"] == restaurant_id:
+            # Generate new item ID by finding the maximum existing item ID and adding 1
+            max_item_id = 0
+            for restaurant in data["rest_list"]:
+                for existing_item in restaurant["items"]:
+                    if existing_item["id"] > max_item_id:
+                        max_item_id = existing_item["id"]
+            
+            new_item_id = max_item_id + 1
+            
+            # Create new item dict in correct order
+            new_item = OrderedDict([
+                ("id", new_item_id),
+                ("name", item.name),
+                ("price", float(item.price)),
+                ("description", item.description or ""),
+                ("available_quantity", item.available_quantity)
+            ])
+            
+            # Add item to restaurant's items list
+            rest["items"].append(new_item)
+            
+            # Save back to file
+            with open("sample.json", "w") as file:
+                json.dump(data, file, indent=4, ensure_ascii=False)
+            
+            # Return the created item
+            return ItemModel(
+                id=new_item_id,
+                name=item.name,
+                price=int(item.price),
+                description=item.description,
+                available_quantity=item.available_quantity
+            )
+    
+    # If restaurant not found
     raise HTTPException(status_code=404, detail="Restaurant not found")
 
 

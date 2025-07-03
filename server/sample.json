@@ -167,6 +167,34 @@
                     "available_quantity": 99
                 }
             ]
+        },
+        {
+            "id": 7,
+            "name": "Taste of India",
+            "location": "Banjara Hills",
+            "items": [
+                {
+                    "id": 119,
+                    "name": "Paneer Tikka",
+                    "price": 220.0,
+                    "description": "Grilled paneer with spices",
+                    "available_quantity": 99
+                },
+                {
+                    "id": 120,
+                    "name": "Veg Pulao",
+                    "price": 150.0,
+                    "description": "Fragrant rice with mixed vegetables",
+                    "available_quantity": 99
+                },
+                {
+                    "id": 121,
+                    "name": "Raita",
+                    "price": 50.0,
+                    "description": "Yogurt with cucumber and spices",
+                    "available_quantity": 99
+                }
+            ]
         }
     ]
 }

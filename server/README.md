@@ -1,5 +1,12 @@
 # Delivery
 
+
+// server: uvicorn main:app
+// client: npm run dev
+
+
+
+
 - popups
 - list 
     - restaurants
@@ -68,4 +75,9 @@ order(post)
 }
 
 
-uvicorn main:app
+server: uvicorn main:app
+client: npm run dev
+
+
+
+
