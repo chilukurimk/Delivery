@@ -51,3 +51,21 @@ GET /restaurants/<id>
 Phase2
 
 Ratings, Reviews(food and rest)
+
+
+
+
+order(post)
+{
+  "restaurant_id": 1,
+  "items": [
+    {"item_id": 101, "quantity": 9}
+  ],
+  "customer_name": "John Doe",
+  "customer_phone": "+1234567890",
+  "delivery_address": "123 Main St, City, State 12345",
+  "special_instructions": "Ring the doorbell twice"
+}
+
+
+uvicorn main:app
