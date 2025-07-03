@@ -19,6 +19,7 @@ interface Restaurant {
 
 const Restaurants = () => {
     const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+    const [selectedRestaurantId, setSelectedRestaurantId] = useState<number | null>(null);
 
     useEffect(() => {
         console.log("Fetching restaurant data...");
@@ -48,22 +49,49 @@ const Restaurants = () => {
     }, []); // The empty dependency array ensures this effect runs only once
 
     return (
-        <div>
-            <h1>Restaurants</h1>
-            <ul>
+        <div className="restaurants">
+            <div>
                 {restaurants.map((restaurant) => (
-                    <li key={restaurant.id}>
-                        {restaurant.name}, {restaurant.location}
-                        {restaurant.items && (
-                            <ul>
-                                {restaurant.items.map(item => (
-                                    <li key={item.id}>{item.name} - ${item.price}</li>
-                                ))}
-                            </ul>
-                        )}
-                    </li>
+                    <div key={restaurant.id}>
+                        <div style={{ display: 'flex',flexDirection: 'row', alignItems: 'center', gap: '15px' }}>
+                            {/* <h2>{restaurant.name}</h2> */}
+                            <button onClick={() => setSelectedRestaurantId(restaurant.id)}>
+                                {restaurant.name}
+                            </button>
+                            <p>{restaurant.location}</p>
+                            
+                        </div>
+                        {/* <p>{restaurant.location}</p> */}
+                    </div>
                 ))}
-            </ul>
+            </div>
+            <hr/>
+            <div>
+                {selectedRestaurantId ? (
+                    <div>
+                        <h3>Items from {restaurants.find(r => r.id === selectedRestaurantId)?.name}</h3>
+                        <ul>
+                            {restaurants
+                                .find(r => r.id === selectedRestaurantId)
+                                ?.items?.map(item => (
+                                    <li key={item.id}>{item.name} - {item.price} /-</li>
+                                )) || <li>No items available</li>}
+                        </ul>
+                        <button onClick={() => setSelectedRestaurantId(null)} style={{ marginBottom: '10px' }}>
+                            Back
+                        </button>
+                        {/* <ul>
+                            {restaurants
+                                .find(r => r.id === selectedRestaurantId)
+                                ?.items?.map(item => (
+                                    <li key={item.id}>{item.name} - {item.price} /-</li>
+                                )) || <li>No items available</li>}
+                        </ul> */}
+                    </div>
+                ) : (
+                    <p>Click Restaurant to view menu</p>
+                )}
+            </div>
         </div>
     );
 };

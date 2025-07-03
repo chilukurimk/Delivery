@@ -143,7 +143,7 @@
         {
             "id": 6,
             "name": "Smoke n Spice",
-            "location": "ABC ",
+            "location": "Hitech City",
             "items": [
                 {
                     "id": 116,
@@ -161,7 +161,7 @@
                 },
                 {
                     "id": 118,
-                    "name": "Crispy Fried Chicken - 2pcs",
+                    "name": "Crispy Fried Chicken: 2pcs",
                     "price": 120.0,
                     "description": "Crunchy, spicy fried chicken served with toppings.",
                     "available_quantity": 99
